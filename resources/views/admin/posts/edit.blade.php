@@ -17,7 +17,7 @@
 
             <x-form.textarea name="excerpt" required>{{ old('excerpt', $post->excerpt) }}</x-form.textarea>
             <x-form.edit-editor name="body" />
-            <div class="outline-none border border-gray-200 p-2 w-full rounded" style="max-width: 650px; margin: auto" id="editor">
+            <div class="outline-none border border-gray-200 p-2 w-full rounded" id="editor">
                 {!! old('body', $post->body) !!}
 {{--                {{ old('body', $post->body) }}--}}
             </div>

@@ -49,6 +49,6 @@
             <button class="ql-clean"></button>
         </span>
     </div>
-    <div class="outline-none border border-gray-200 p-2 w-full rounded" style="max-width: 650px; margin: auto" id="editor"></div>
+    <div class="outline-none border border-gray-200 p-2 w-full rounded" id="editor"></div>
     <x-form.error name="{{ $name }}" />
 </x-form.field>
