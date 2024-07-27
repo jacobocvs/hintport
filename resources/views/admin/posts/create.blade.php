@@ -30,7 +30,6 @@
     </x-setting>
 </x-layout>
 
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
     // Initialize Quill editor
     var quill = new Quill('#editor', {
