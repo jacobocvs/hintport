@@ -15,6 +15,14 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// Load the appropriate .env.production file
+$appEnv = getenv('APP_ENV') ?: 'production';
+$environmentFile = '.env.' . $appEnv;
+
+if (file_exists(base_path($environmentFile))) {
+    $app->loadEnvironmentFrom($environmentFile);
+}
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
