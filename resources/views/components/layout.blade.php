@@ -1,5 +1,8 @@
 <!doctype html>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324093824269235"
+        crossorigin="anonymous"></script>
+
 <title>{{ config('app.name') }}</title>
 <link rel="icon" href="/hintport.ico" type="image/x-icon">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
