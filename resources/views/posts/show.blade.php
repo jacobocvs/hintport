@@ -1,6 +1,6 @@
 <x-layout>
-    <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
-        <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
+    <main class="max-w-8xl mx-auto mt-10 lg:mt-20 space-y-6">
+        <article class="max-w-7xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
                 <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Post thumbnail" class="rounded-xl">
 
@@ -45,7 +45,8 @@
                     {{ $post->title }}
                 </h1>
 
-                <div class="prose">{!! $post->body !!}</div>
+                <div class="prose" style="max-width: 100%">{!! $post->body !!}</div>
+
             </div>
 
             <section class="col-span-8 col-start-5 mt-10 space-y-6">
@@ -58,3 +59,45 @@
         </article>
     </main>
 </x-layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function createCopyButton(preElement) {
+            const button = document.createElement('button');
+            button.textContent = 'Copy';
+            button.classList.add('copy-button', 'bg-purple-500', 'text-white', 'uppercase', 'font-semibold', 'text-xs', 'py-2', 'px-10', 'rounded-2xl', 'hover:bg-purple-600');
+
+            button.addEventListener('click', function () {
+                const textToCopy = preElement.textContent;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    showAlert(button);
+                }, function (err) {
+                    console.error('Error copying text: ', err);
+                });
+            });
+
+            preElement.parentNode.insertBefore(button, preElement.nextSibling);
+        }
+
+        // Find all <pre> elements and add a copy button to each
+        document.querySelectorAll('pre').forEach(function (preElement) {
+            createCopyButton(preElement);
+        });
+
+        function showAlert(button) {
+            const alert = document.createElement('div');
+            alert.textContent = 'Copied to clipboard!';
+            alert.classList.add('fixed', 'bg-green-500', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'shadow-md');
+
+            const rect = button.getBoundingClientRect();
+            alert.style.left = `${rect.left + window.scrollX}px`;
+            alert.style.top = `${rect.top + window.scrollY - rect.height - 10}px`;
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 2000);
+        }
+    });
+</script>
