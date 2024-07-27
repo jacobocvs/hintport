@@ -1,0 +1,37 @@
+name: Generate a build and push to another branch
+
+on:
+  push:
+    branches:
+      - main # The branch name where you commit the new changes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # Ensure this matches the PHP version you need
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader --no-interaction
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Build Assets
+        run: npm run production # Run the Laravel Mix build command
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: main # The branch name where you want to push the assets
+          FOLDER: public # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: "Build: ({sha}) {msg}" # The commit message
