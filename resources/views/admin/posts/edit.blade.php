@@ -16,10 +16,9 @@
             </div>
 
             <x-form.textarea name="excerpt" required>{{ old('excerpt', $post->excerpt) }}</x-form.textarea>
-            <x-form.edit-editor name="body" />
+            <label class="block mb-2 uppercase font-bold text-xs text-gray-700" >Body</label>
             <div class="outline-none border border-gray-200 p-2 w-full rounded" id="editor">
                 {!! old('body', $post->body) !!}
-{{--                {{ old('body', $post->body) }}--}}
             </div>
             <input type="hidden" name="body" id="body-input">
 
@@ -44,26 +43,7 @@
     </x-setting>
 </x-layout>
 
-<script>
-    // Initialize Quill editor
-    var quill = new Quill('#editor', {
-        modules: {
-            syntax: true,
-            toolbar: '#body'
-        },
-        theme: 'snow'
-    });
-
-    // Set up the form submission
-    document.querySelector('#postForm').onsubmit = function () {
-        // Populate hidden input with Quill content before submitting
-        var bodyInput = document.querySelector('#body-input');
-        bodyInput.value = quill.root.innerHTML;
-
-        // Additional check to ensure the body is populated
-        if (bodyInput.value.trim() === "") {
-            alert("Post body cannot be empty!");
-            return false;
-        }
-    };
-</script>
+<link href="{{ asset('css/quill.snow.css') }}" rel="stylesheet">
+<script src="{{ asset('js/quill.js') }}"></script>
+<script src="{{ asset('js/quill-init.js') }}"></script>
+<script src="{{ asset('js/purify.js') }}"></script>
