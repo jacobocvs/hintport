@@ -1,3 +1,12 @@
+<!-- Include your favorite highlight.js stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+<!-- Include the highlight.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
 <x-layout>
     <main class="max-w-8xl mx-auto mt-10 lg:mt-20 space-y-6">
         <article class="max-w-7xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
