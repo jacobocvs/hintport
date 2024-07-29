@@ -3,15 +3,15 @@
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <tbody class="bg-white divide-y divide-gray-200">
+                    <div class="shadow overflow-hidden border-b border-gray-800 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-800 auto-table">
+                            <tbody class="bg-gray-800 divide-y divide-gray-700">
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    <a href="/posts/{{ $post->slug }}">
+                                                    <a class="text-gray-300 font-bold" href="/posts/{{ $post->slug }}">
                                                         {{ $post->title }}
                                                     </a>
                                                 </div>
@@ -19,7 +19,7 @@
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/admin/posts/{{ $post->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                            <a href="/admin/posts/{{ $post->id }}/edit" class=" font-bold text-indigo-400 hover:text-blue-600">Edit</a>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -27,7 +27,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button class="text-xs text-gray-400">Delete</button>
+                                                <button class="font-bold text-xs text-red-300">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

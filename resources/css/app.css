@@ -1,0 +1,53 @@
+.post-body {
+    background: #1F2937;
+    color: white;
+    margin: 4px;
+    font-family: sans-serif;
+    border-radius: 10px;
+    padding: 1.5em;
+    width: 100%;
+}
+
+.post-body pre {
+    background-color: #374151;
+    padding: 1em;
+    border-radius: 10px;
+    word-wrap: break-word;
+    overflow: auto;
+    max-height: 25em;
+}
+.post-body a {
+    color: #1C64F2;
+    text-decoration: underline;
+}
+.post-body a:hover {
+    color: #1E429F;
+    text-decoration: underline;
+}
+.post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6 {
+    color: #9CA3AF;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.post-body p {
+    color: #D1D5DB;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+.post-body ol {
+    color: #D2D2D2;
+    margin-left: 5em;
+    list-style-type: disc
+}
+.post-form {
+    color: #D2D2D2;
+    max-width: 80em;
+    list-style-type: none;
+    background: #1F2937;
+}
+.ql-toolbar {
+    background-color: #D2D2D2;
+}
+.ql-editor select{
+    background-color: black;
+}
