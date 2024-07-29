@@ -16,7 +16,7 @@ $app = new Illuminate\Foundation\Application(
 );
 
 // Load the appropriate .env.production file
-$appEnv = getenv('APP_ENV') ?: 'development';
+$appEnv = getenv('APP_ENV') ?: 'production';
 $environmentFile = '.env.' . $appEnv;
 
 if (file_exists(base_path($environmentFile))) {
