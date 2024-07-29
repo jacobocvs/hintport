@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use DOMDocument;
 
 class AdminPostController extends Controller
 {
@@ -54,25 +55,25 @@ class AdminPostController extends Controller
 
         $post->update($attributes);
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('images');
-                Image::create([
-                    'post_id' => $post->id,
-                    'path' => $imagePath
-                ]);
-            }
-        }
-
-        if ($request->hasFile('videos')) {
-            foreach ($request->file('videos') as $video) {
-                $videoPath = $video->store('videos');
-                Video::create([
-                    'post_id' => $post->id,
-                    'path' => $videoPath
-                ]);
-            }
-        }
+//        if ($request->hasFile('images')) {
+//            foreach ($request->file('images') as $image) {
+//                $imagePath = $image->store('images');
+//                Image::create([
+//                    'post_id' => $post->id,
+//                    'path' => $imagePath
+//                ]);
+//            }
+//        }
+//
+//        if ($request->hasFile('videos')) {
+//            foreach ($request->file('videos') as $video) {
+//                $videoPath = $video->store('videos');
+//                Video::create([
+//                    'post_id' => $post->id,
+//                    'path' => $videoPath
+//                ]);
+//            }
+//        }
 
         return back()->with('success', 'Post Updated!');
     }
