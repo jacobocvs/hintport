@@ -2,12 +2,14 @@
 
 <x-post-featured-card :post="$posts[0]" />
 
+
+
 @if ($posts->count() > 1)
-    <div class="lg:grid lg:grid-cols-6 text gap-1.5">
+    <div class="grid-post">
         @foreach ($posts->skip(1) as $post)
             <x-post-card
                 :post="$post"
-                class="{{ $loop->iteration < 3 ? 'col-span-3' : 'col-span-2' }}"
+                class="{{ $loop->iteration < 3 ? 'sub-featured-posts' : 'general-posts' }}"
             />
         @endforeach
     </div>
