@@ -4,9 +4,16 @@
         crossorigin="anonymous"></script>
 
 <title>{{ config('app.name') }}</title>
+<<<<<<< HEAD
 <link rel="icon" href="/hintport.ico" type="image/x-icon">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://unpkg.com/@tailwindcss/typography@0.4.0/dist/typography.min.css" rel="stylesheet">
+=======
+@vite(['resources/css/app.scss', 'resources/js/app.js'])
+<link rel="icon" href="/hintport_indigo.ico" type="image/x-icon">
+{{--<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
+{{--<link href="https://unpkg.com/@tailwindcss/typography@0.4.0/dist/typography.min.css" rel="stylesheet">--}}
+>>>>>>> 6ccbaf748640991224076bc1994c761961b7cd3e
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -38,12 +45,21 @@
     }
 </style>
 
+<<<<<<< HEAD
 <body style="font-family: Open Sans, sans-serif">
     <section class="px-6 py-8">
         <nav class="sticky top-0 z-50 bg-white md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
                     <img src="/images/logo.png" alt="Hintport Logo" width="165" height="16">
+=======
+<body class="body" style="font-family: Open Sans, sans-serif">
+    <section>
+        <nav id="nav">
+            <div class="logo-container">
+                <a href="/">
+                    <img class="logo" src="/images/logo_dark_mode.png" alt="Hintport Logo">
+>>>>>>> 6ccbaf748640991224076bc1994c761961b7cd3e
                 </a>
             </div>
 
@@ -114,12 +130,16 @@
             <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
 
             <div class="mt-10">
+<<<<<<< HEAD
                 <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
+=======
+                <div class="">
+>>>>>>> 6ccbaf748640991224076bc1994c761961b7cd3e
 
                     <form method="POST" action="{{ route('newsletter.subscribe') }}" class="lg:flex text-sm">
                         @csrf
 
-                        <div class="lg:py-3 lg:px-5 flex items-center">
+                        <div class="">
                             <label for="email" class="hidden lg:inline-block">
                                 <img src="/images/letter-icon.png" alt="letter" class="mx-auto" style="width: 35px;">
                             </label>
