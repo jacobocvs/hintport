@@ -4,17 +4,19 @@
         crossorigin="anonymous"></script>
 
 <title>{{ config('app.name') }}</title>
-@vite(['resources/css/app.scss', 'resources/js/app.js'])
-<link rel="icon" href="/hintport_indigo.ico" type="image/x-icon">
+<link rel="icon" href="/hintport.ico" type="image/x-icon">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://unpkg.com/@tailwindcss/typography@0.4.0/dist/typography.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-
+<!-- Include your favorite highlight.js stylesheet -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+<!-- Include the highlight.js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 
@@ -36,12 +38,12 @@
     }
 </style>
 
-<body class="bg-gray-900" style="font-family: Open Sans, sans-serif">
-    <section>
-        <nav class="sticky top-0 z-10 flex items-center justify-between w-full px-3 py-3 mx-auto max-w-8xl lg:px-4 bg-gray-800 border-b border-gray-700 rounded-b-lg">
+<body style="font-family: Open Sans, sans-serif">
+    <section class="px-6 py-8">
+        <nav class="sticky top-0 z-50 bg-white md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo_dark_mode.png" alt="Hintport Logo" width="165" height="16">
+                    <img src="/images/logo.png" alt="Hintport Logo" width="165" height="16">
                 </a>
             </div>
 
@@ -49,7 +51,7 @@
                 @auth
                     <x-dropdown>
                         <x-slot name="trigger">
-                            <button class="text-xs font-bold uppercase text-gray-300 hover:text-indigo-500">
+                            <button class="text-xs font-bold uppercase">
                                 Welcome, {{ auth()->user()->name }}!
                             </button>
                         </x-slot>
@@ -84,18 +86,18 @@
                     </x-dropdown>
                 @else
                     <a href="/register"
-                       class="text-xs text-gray-300 font-bold uppercase hover:text-indigo-400 {{ request()->is('register') ? 'text-indigo-500' : '' }}">
+                       class="text-xs font-bold uppercase {{ request()->is('register') ? 'text-purple-500' : '' }}">
                         Register
                     </a>
 
                     <a href="/login"
-                       class="ml-6 text-xs text-gray-300 font-bold uppercase hover:text-indigo-400 {{ request()->is('login') ? 'text-indigo-500' : '' }}">
+                       class="ml-6 text-xs font-bold uppercase {{ request()->is('login') ? 'text-purple-500' : '' }}">
                         Log In
                     </a>
                 @endauth
 
                 <a href="#newsletter"
-                   class="bg-indigo-800 hover:bg-indigo-700 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                   class="bg-purple-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a>
             </div>
@@ -104,22 +106,22 @@
         {{ $slot }}
 
         <footer id="newsletter"
-                class="bg-gray-800 border border-black border-opacity-5 rounded-xl text-center py-4 px-10 mt-16"
+                class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16"
         >
-            <img src="/images/hintport_icon.png" alt="megaphone" class="mx-auto py-4" style="width: 145px;">
+            <img src="/images/avatar.png" alt="megaphone" class="mx-auto" style="width: 145px;">
 
-            <h5 class="text-3xl text-gray-400">Stay in touch with the latest posts</h5>
-            <p class="text-sm mt-3 text-gray-400">Promise to keep the inbox clean. No bugs.</p>
+            <h5 class="text-3xl">Stay in touch with the latest posts</h5>
+            <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
 
             <div class="mt-10">
-                <div class="relative inline-block mx-auto lg:bg-gray-700 text-gray-400 rounded-full">
+                <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
 
-                    <form method="POST" action="{{ route('newsletter.subscribe') }}" class="lg:flex text-sm my-0">
+                    <form method="POST" action="{{ route('newsletter.subscribe') }}" class="lg:flex text-sm">
                         @csrf
 
                         <div class="lg:py-3 lg:px-5 flex items-center">
                             <label for="email" class="hidden lg:inline-block">
-                                <img src="/images/letter_icon_dark_mode.png" alt="letter" class="mx-auto" style="width: 35px;">
+                                <img src="/images/letter-icon.png" alt="letter" class="mx-auto" style="width: 35px;">
                             </label>
 
                             <div>
@@ -136,7 +138,7 @@
                         </div>
 
                         <button type="submit"
-                                class="transition-colors duration-300 bg-indigo-800 text-gray-300 hover:bg-indigo-700 hover:text-gray-300 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold uppercase py-3 px-8"
+                                class="transition-colors duration-300 bg-purple-500 hover:bg-purple-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
                         >
                             Subscribe
                         </button>

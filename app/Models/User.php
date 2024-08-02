@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\File;
 
 class User extends Authenticatable
 {
@@ -63,16 +62,5 @@ class User extends Authenticatable
     public function getRememberTokenName()
     {
         return 'remember_token';
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($user) {
-
-            $avatarFiles = File::files(public_path('avatar'));
-            $randomAvatar = $avatarFiles[array_rand($avatarFiles)];
-            $user->avatar = 'avatar/' . basename($randomAvatar);
-        });
     }
 }

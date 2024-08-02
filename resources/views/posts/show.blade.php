@@ -1,18 +1,27 @@
+<!-- Include your favorite highlight.js stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+<!-- Include the highlight.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
 <x-layout>
     <main class="max-w-8xl mx-auto mt-10 lg:mt-20 space-y-6">
         <article class="max-w-7xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
                 <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Post thumbnail" class="rounded-xl">
 
-                <p class="mt-4 block text-gray-400 text-xs font-semibold">
+                <p class="mt-4 block text-gray-400 text-xs">
                     Published
                     <time>{{ $post->created_at->diffForHumans() }}</time>
                 </p>
 
                 <div class="flex items-center lg:justify-center text-sm mt-4">
-                    <img src="{{ asset($post->author->avatar) }}" alt="avatar" width="35" height="16" class="rounded-2xl">
+                    <img src="/images/avatar-icon.png" alt="avatar" width="35" height="16" >
                     <div class="ml-3 text-left">
-                        <h5 class="font-bold text-gray-400">
+                        <h5 class="font-bold">
                             <a href="/?author={{ $post->author->username }}">{{ $post->author->name }}</a>
                         </h5>
                     </div>
@@ -22,7 +31,7 @@
             <div class="col-span-8">
                 <div class="hidden lg:flex justify-between mb-6">
                     <a href="/"
-                       class="transition-colors text-gray-400 duration-300 relative inline-flex items-center text-lg hover:text-indigo-500">
+                       class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-purple-500">
                         <svg width="22" height="22" viewBox="0 0 22 22" class="mr-2">
                             <g fill="none" fill-rule="evenodd">
                                 <path stroke="#000" stroke-opacity=".012" stroke-width=".5" d="M21 1v20.16H.84V1z">
@@ -41,17 +50,15 @@
                     </div>
                 </div>
 
-                <h1 class="font-bold text-3xl lg:text-4xl mb-10 text-gray-300">
+                <h1 class="font-bold text-3xl lg:text-4xl mb-10">
                     {{ $post->title }}
                 </h1>
 
-                <div>
-                    <div class="post-body">{!! $post->body !!}</div>
-                </div>
+                <div class="prose" style="max-width: 100%">{!! $post->body !!}</div>
 
             </div>
 
-            <section class="col-span-8 col-start-5 mt-10 space-y-6 text-gray-400">
+            <section class="col-span-8 col-start-5 mt-10 space-y-6">
                 @include ('posts._add-comment-form')
 
                 @foreach ($post->comments as $comment)
@@ -67,11 +74,12 @@
         function createCopyButton(preElement) {
             const button = document.createElement('button');
             button.textContent = 'Copy';
-            button.classList.add('copy-button', 'bg-gray-600', 'text-gray-300', 'uppercase', 'font-semibold', 'text-xs', 'py-2', 'px-8', 'my-1', 'rounded-2xl', 'hover:bg-indigo-600');
+            button.classList.add('copy-button', 'bg-purple-500', 'text-white', 'uppercase', 'font-semibold', 'text-xs', 'py-2', 'px-10', 'rounded-2xl', 'hover:bg-purple-600');
 
             button.addEventListener('click', function () {
                 const textToCopy = preElement.textContent;
                 navigator.clipboard.writeText(textToCopy).then(function () {
+                    showAlert(button);
                 }, function (err) {
                     console.error('Error copying text: ', err);
                 });
@@ -84,5 +92,21 @@
         document.querySelectorAll('pre').forEach(function (preElement) {
             createCopyButton(preElement);
         });
+
+        function showAlert(button) {
+            const alert = document.createElement('div');
+            alert.textContent = 'Copied to clipboard!';
+            alert.classList.add('fixed', 'bg-green-500', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded', 'shadow-md');
+
+            const rect = button.getBoundingClientRect();
+            alert.style.left = `${rect.left + window.scrollX}px`;
+            alert.style.top = `${rect.top + window.scrollY - rect.height - 10}px`;
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 2000);
+        }
     });
 </script>
