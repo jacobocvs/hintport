@@ -5,12 +5,20 @@
     "isEntry": true
   },
   "resources/js/app.js": {
+<<<<<<< HEAD
     "file": "assets/app-9X7cqPKM.js",
+=======
+    "file": "assets/app-Crtpbgk5.js",
+>>>>>>> parent of 343bbe3 (Revert "Merge branch 'development'")
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
+<<<<<<< HEAD
       "assets/app-um7H2Vt4.css"
+=======
+      "assets/app-BokL2Fr7.css"
+>>>>>>> parent of 343bbe3 (Revert "Merge branch 'development'")
     ]
   }
 }

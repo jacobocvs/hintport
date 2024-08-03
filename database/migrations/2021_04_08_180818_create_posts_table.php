@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->longText('body');
+            $table->json('videos')->nullable();
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });

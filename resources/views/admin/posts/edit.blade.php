@@ -14,14 +14,14 @@
 
                 <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" class="rounded-xl ml-6" width="100">
             </div>
-
             <x-form.textarea name="excerpt" required>{{ old('excerpt', $post->excerpt) }}</x-form.textarea>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700" >Body</label>
-            <div class="outline-none border border-gray-200 p-2 w-full rounded" id="editor">
-                {!! old('body', $post->body) !!}
+            <div>
+                <label>Body</label>
+                <div class="post-form" id="editor">
+                    {!! old('body', $post->body) !!}
+                </div>
+                <input type="hidden" name="body" id="body-input">
             </div>
-            <input type="hidden" name="body" id="body-input">
-
 
             <x-form.field>
                 <x-form.label name="category"/>
